@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: development_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - pos
+  redis:
+    image: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - pos
+  app:
+    build: .
+    command: tail -f /dev/null
+    volumes:
+      - .:/app
+      - /app/node_modules/
+    depends_on:
+      - db
+      - redis
+    networks:
+      - pos
+    ports:
+      - "3000:3000"
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+volumes:
+  data:
+networks:
+  pos:
