@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Url;
 
 class UrlController extends Controller
 {
@@ -13,7 +14,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        //
+        return view('url.index', ["urls" => Url::all()]);
     }
 
     /**
@@ -23,7 +24,7 @@ class UrlController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

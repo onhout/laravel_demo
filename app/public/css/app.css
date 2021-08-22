@@ -7162,6 +7162,22 @@ select {
   table-layout: fixed;
 }
 
+.hover\:table-auto:hover {
+  table-layout: auto;
+}
+
+.hover\:table-fixed:hover {
+  table-layout: fixed;
+}
+
+.focus\:table-auto:focus {
+  table-layout: auto;
+}
+
+.focus\:table-fixed:focus {
+  table-layout: fixed;
+}
+
 .border-collapse {
   border-collapse: collapse;
 }
@@ -38527,6 +38543,22 @@ select {
     table-layout: fixed;
   }
 
+  .sm\:hover\:table-auto:hover {
+    table-layout: auto;
+  }
+
+  .sm\:hover\:table-fixed:hover {
+    table-layout: fixed;
+  }
+
+  .sm\:focus\:table-auto:focus {
+    table-layout: auto;
+  }
+
+  .sm\:focus\:table-fixed:focus {
+    table-layout: fixed;
+  }
+
   .sm\:border-collapse {
     border-collapse: collapse;
   }
@@ -69811,6 +69843,22 @@ select {
   }
 
   .md\:table-fixed {
+    table-layout: fixed;
+  }
+
+  .md\:hover\:table-auto:hover {
+    table-layout: auto;
+  }
+
+  .md\:hover\:table-fixed:hover {
+    table-layout: fixed;
+  }
+
+  .md\:focus\:table-auto:focus {
+    table-layout: auto;
+  }
+
+  .md\:focus\:table-fixed:focus {
     table-layout: fixed;
   }
 
@@ -101101,6 +101149,22 @@ select {
     table-layout: fixed;
   }
 
+  .lg\:hover\:table-auto:hover {
+    table-layout: auto;
+  }
+
+  .lg\:hover\:table-fixed:hover {
+    table-layout: fixed;
+  }
+
+  .lg\:focus\:table-auto:focus {
+    table-layout: auto;
+  }
+
+  .lg\:focus\:table-fixed:focus {
+    table-layout: fixed;
+  }
+
   .lg\:border-collapse {
     border-collapse: collapse;
   }
@@ -132388,6 +132452,22 @@ select {
     table-layout: fixed;
   }
 
+  .xl\:hover\:table-auto:hover {
+    table-layout: auto;
+  }
+
+  .xl\:hover\:table-fixed:hover {
+    table-layout: fixed;
+  }
+
+  .xl\:focus\:table-auto:focus {
+    table-layout: auto;
+  }
+
+  .xl\:focus\:table-fixed:focus {
+    table-layout: fixed;
+  }
+
   .xl\:border-collapse {
     border-collapse: collapse;
   }
@@ -163672,6 +163752,22 @@ select {
   }
 
   .\32xl\:table-fixed {
+    table-layout: fixed;
+  }
+
+  .\32xl\:hover\:table-auto:hover {
+    table-layout: auto;
+  }
+
+  .\32xl\:hover\:table-fixed:hover {
+    table-layout: fixed;
+  }
+
+  .\32xl\:focus\:table-auto:focus {
+    table-layout: auto;
+  }
+
+  .\32xl\:focus\:table-fixed:focus {
     table-layout: fixed;
   }
 
