@@ -12,6 +12,16 @@ class Url extends Model
         'original_url',
     ];
 
+    public function create_slug()
+    {
+        $char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $randomString = '';
+        for ($i = 0; $i < 5; $i++) {
+            $randomString .= $char[rand(0, strlen($char) - 1)];
+        }
+        return $randomString;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

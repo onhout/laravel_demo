@@ -19,7 +19,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/urls', [UrlController::class, 'index'])->name('urls');
+Route::resource('urls', UrlController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

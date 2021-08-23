@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Url;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class UrlController extends Controller
 {
@@ -35,7 +38,22 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        Url::create(array_merge($this->validateRequest(), ['user_id' => Auth::user()->id]));
+        $validator = Validator::make($request->all(), [
+            'original_url' => 'required|url',
+        ]);
+        if ($validator->fails()) {
+            Session::flash('error', $validator->messages()->first());
+            return redirect()->back()->withInput();
+        } else {
+            $url = new Url;
+            $url->user_id = Auth::user()->id;
+            $url->original_url = $request->original_url;
+            $url->shortened_url = $url->create_slug();
+            $url->save();
+        }
+
+        return redirect(route('urls.index'));
     }
 
     /**
