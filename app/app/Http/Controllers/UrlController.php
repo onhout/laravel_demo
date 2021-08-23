@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Url;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Jenssegers\Agent\Agent;
+use App\Models\Click;
 
 class UrlController extends Controller
 {
@@ -59,12 +63,12 @@ class UrlController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param Url $url
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Url $url)
     {
-        //
+        return view('url.show', ["url" => $url]);
     }
 
     /**
@@ -99,5 +103,26 @@ class UrlController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function redirect($shortened_url)
+    {
+        $agent = new Agent();
+        $url = Url::whereRaw("BINARY `shortened_url` = ?", $shortened_url)->firstOrFail();
+        Click::create([
+            'url_id' => $url->id,
+            'visitor' => request()->ip(),
+            'browser' => $agent->browser(),
+            'platform' => $agent->platform(),
+            'language' => implode(',', $agent->languages())
+        ]);
+
+        return redirect()->away($url->original_url);
     }
 }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Click extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'url_id',
+        'visitor',
+        'browser',
+        'platform',
+        'language',
+    ];
 }

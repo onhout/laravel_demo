@@ -20,8 +20,9 @@
             @if(Auth::user())
                 <td class="border px-8 py-4">{{$item->user->email}}</td>
             @endif
-            <td class="border px-8 py-4">{{$item->original_url}}</td>
-            <td class="border px-8 py-4">{{$item->shortened_url}}</td>
+            <td class="border px-8 py-4">
+                <a href="{{route('urls.show', ['url'=>$item])}}">{{$item->original_url}} </a></td>
+            <td class="border px-8 py-4"><a href="/{{$item->shortened_url}}">{{$item->shortened_url}}</a></td>
             <td class="border px-8 py-4">{{count($item->clicks)}}</td>
         </tr>
     @endforeach
